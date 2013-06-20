@@ -18,7 +18,7 @@ CONFIG = {
 # https://github.com/plusjade/jekyll-bootstrap
 ###
 
-# Usage: rake post title="A Title" [date="2012-02-09"]
+# Usage: rake post title="A Title" [date="2012-02-09"] [category="foo"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.
@@ -42,7 +42,7 @@ task :post do
     post.puts "---"
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
-    post.puts "category: posts"
+    post.puts "category: #{ENV["category"]}"
     post.puts "---"
   end
 end # task :post
