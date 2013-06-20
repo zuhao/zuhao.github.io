@@ -1,0 +1,15 @@
+---
+layout: layout
+title: "Categories"
+---
+
+<section class="content">
+  <h1 class="thin">CATEGORIES</h1>
+  <ul class="listing">
+    {% for category in site.categories %}
+    <li>
+      <a href="/categories/{{ category[0] }}">{{ category[0] }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
