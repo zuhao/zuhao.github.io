@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Start of GSOC 2013"
-category: posts
+category: gsoc2013
 ---
 
 This is my second time doing [Google Summer of Code](http://www.google-melange.com/gsoc/homepage/google/gsoc2013). This summer I will be working with the [Ruby Science Foundation](http://sciruby.com), on the project of creating a plotting library based on [D3.js](http://d3js.org), a very powerful javascript library for data-driven visualization. In the recent years, majority of the attention of Ruby community has been placed on web development, thanks to excellent frameworks such as Rails. However, comparing to Python, Ruby still has a long way to catch up in terms of scientific applications. Tools like [matplotlib](http://matplotlib.org) are missing here; hence, this project is an attempt to create a new plotting solution in Ruby, and lay a solid foundation for not only static plotting but also interactive visualization, leveraging the strengths of the underlying D3.
