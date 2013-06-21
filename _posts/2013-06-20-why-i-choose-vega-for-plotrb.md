@@ -90,11 +90,11 @@ A workaround would be to embed custom javascript functions (for example as a str
 
 ### How does Vega solve the problem
 
-Vega does it by entirely avoiding the problem of compiling some interpreted servers-side dynamic typing language such as Ruby, into client-side Javascript. If it's extremely difficult to translate one language into another, why not find something else they're both comfortable with? It's like when a Jew meets a Chinese, and it will be unwise to try to translate one language into anther, when both of them can speak fluent English!
+Vega does it by entirely avoiding the problem of compiling some interpreted servers-side dynamic typing language such as Ruby, into client-side Javascript. If it's extremely difficult to translate one language into another, why not find something else they're both comfortable with?
 
-No more translation, Vega itself is written natively in javascript. What's more, the specification, which is all Vega needs to "describe" visualization, is in JSON format. It's much easier for Ruby to work with Hashes and generate JSON objects for Vega to process, than to translate the code directly into javascript.
+No more translation, Vega itself is written natively in javascript. More importantly, the specification, which is all Vega needs to "describe" visualization, is in JSON format. It's much easier for Ruby to work with Hashes and generate JSON objects for Vega to process, than to translate the code directly into javascript.
 
-Another advantage of Vega is that it's a "declarative" grammar. Comparing to D3, it is higher level in terms of abstraction and simplicity for the users. For example, if you want to plot a bar chart in D3, the axes alone would require much of your attention, and "bother" you with all kinds of details such as scales, orientations, tick sizes, padding, etc. But more often than not, you just want a damn axes! Vega takes care of many of the details, and let you focus on more important things. To declare axes in the specification, it's as simple as the following four lines.
+Another advantage of Vega is that it's a "declarative" grammar. Comparing to D3, it is higher level in terms of abstraction and simplicity for the users. For example, if you want to plot a bar chart in D3, the axes alone would require much of your attention, and "bother" you with all kinds of details such as scales, orientations, tick sizes, padding, etc. But more often than not, you just want a damn pair of axes! Vega takes care of many of the details, and let you focus on more important things. To declare axes in the specification, it's as simple as the following four lines.
 
 {% highlight json %}
 "axes": [
