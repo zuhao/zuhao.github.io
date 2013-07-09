@@ -61,12 +61,12 @@ end
 
 And here's the result obtained on my machine.
 
-```
+{% hightlight %}
                 user        system      total         real
 attr_accessor   1.230000    0.010000    1.240000 (  2.103052)
 attr_reader     1.220000    0.010000    1.230000 (  1.825171)
 manual          1.630000    0.010000    1.640000 (  2.087668)
-```
+{% endhighlight %}
 
 A simple benchmark is sufficient to tell the difference. As it turned out, Ruby's `attr_accessor` and `attr_reader` not only shorten the code, but also bring performance improvements. I should try to use them whenever I can.
 
