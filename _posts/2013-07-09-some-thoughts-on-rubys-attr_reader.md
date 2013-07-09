@@ -61,7 +61,7 @@ end
 
 And here's the result obtained on my machine.
 
-{% hightlight %}
+{% highlight bash %}
                 user        system      total         real
 attr_accessor   1.230000    0.010000    1.240000 (  2.103052)
 attr_reader     1.220000    0.010000    1.230000 (  1.825171)
