@@ -4,7 +4,7 @@ title: "How Plotrb Works Internally"
 category: gsoc2013
 ---
 
-This week I have wrapped up a bare minimum working version of Plotrb. In this article I am going to contruct the first demo using Plotrb's internal APIs only. A plotting DSL still needs to be designed and implemented on top of the APIs, and that will be the job for the next several weeks. Despite being a bit long (but surely shorter than the equivalant if we were to write in D3), the demo is also a great way to show how Plotrb works internally.
+This week I have wrapped up a bare minimum working version of Plotrb. In this article I am going to construct the first demo using Plotrb's internal APIs only. A plotting DSL still needs to be designed and implemented on top of the APIs, and that will be the job for the next several weeks. Despite being a bit long (but surely shorter than the equivalent if we were to write in D3), the demo is also a great way to show how Plotrb works internally.
 
 There are a few important components that we can find in most of the plots, namely the data, the scales, the axes, and the marks. So we're gonna construct them one at a time.
 
@@ -75,7 +75,7 @@ And we are almost done. We have all the components of a plot we need, what's lef
 # Visualization
 padding = {top: 50, left: 50, bottom: 50, right: 50}
 visualization = ::Plotrb::Visualization.new(
-  name: 'vis', width: 400, height:400, padding: padding, 
+  name: 'vis', width: 400, height: 400, padding: padding, 
   data: data, scales: scales, marks: marks, axes: axes
 )
 {% endhighlight %}
