@@ -1,8 +1,8 @@
-markdown: rdiscount
+markdown: redcarpet
 pygments: true
 permalink: /posts/:title
-rdiscount:
-  extensions: [smart]
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data"]
 title : Zuhao
 production_url : http://wanzuhao.com
 description: "Done is better than perfect."
