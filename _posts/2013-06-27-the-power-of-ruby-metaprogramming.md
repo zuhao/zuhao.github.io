@@ -12,13 +12,13 @@ Every Transform definition must have a valid "type" to specify the transform to 
 
 For example, `filter` transform has only one property called `test`, which is an expression for the filter predicate.
 
-{% highlight json %}
+```json
 {"type": "filter", "test": "d.data.x > 10"}
-{% endhighlight %}
+```
 
 Whilst `zip` transform, which merges two data sets together according to the provided join key, has five properties, namely `with`, `as`, `key`, `withKey`, `default`.
 
-{% highlight json %}
+```json
 {
   "type": "zip",
   "key": "data.id",
@@ -26,7 +26,7 @@ Whilst `zip` transform, which merges two data sets together according to the pro
   "withKey": "data.key",
   "as": "value"
 }
-{% endhighlight %}
+```
 
 _(For the purpose of this article, there is no need to dive into the details of each transform.)_
 
@@ -42,7 +42,7 @@ First of all, using inheritance to create separate sub-classes for each type of 
 
 When instantiating a Transform, two arguments are passed in. They are the `type` and the `args` as a Hash. After passing the validation of `type` and corresponding `args`, the following method is used to set the properties for that particular instance. It uses `self.singleton_class` so that the attr_accessors will not pollute other instances.
 
-{% highlight ruby %}
+```ruby
 def set_properties(args)
   args.each do |k, v|
     self.singleton_class.class_eval do
@@ -51,13 +51,13 @@ def set_properties(args)
     self.instance_variable_set("@#{k}", v)
   end
 end
-{% endhighlight %}
+```
 
 However, this still does not solve the last problem. Since Ruby's `attr_accessor` only defines a setter and getter method for the instance variable, there is no direct way to know what instance variables are defined via `attr_accessor`.
 
 In order to add the ability to keep track of the `attr_accessor` properties, a simple workaround would be to override the `attr_accessor` method, and store the properties in another instance variable.
 
-{% highlight ruby %}
+```ruby
 def self.attr_accessor(*vars)
   @properties ||= []
   @properties.concat(vars)
@@ -67,7 +67,7 @@ end
 def properties
   self.singleton_class.instance_variable_get(:@properties)
 end
-{% endhighlight %}
+```
 
 And that's it. With fewer than 20 lines of Ruby code, we've achieved all three goals which would require much more effort to do in most of the other languages.
 

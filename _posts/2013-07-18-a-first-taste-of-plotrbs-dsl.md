@@ -10,9 +10,9 @@ I've promised a more concise and elegant DSL, and now here it is. (Well, maybe j
 
 Firstly, let's assume we have a top-level visualization instance.
 
-{% highlight ruby %}
+```ruby
 vis = ::Plotrb::Visualization.new(name: 'my_vis')
-{% endhighlight %}
+```
 
 We want to add scales to this visualization. Vega defines scales as
 
@@ -22,7 +22,7 @@ The following is a list of sample use-cases for adding a scale to our visualizat
 
 (Just to make it more fun, don't read the comments first and guess what each example does. Trust me, you'll have a pretty good idea just from the code. Yes, the DSL is _that_ awesome!)
 
-{% highlight ruby %}
+```ruby
 vis.ordinal_scale.from('data_source.category').to_colors
 # transform category field of our data_source into a 10-color categorical palette
 
@@ -37,13 +37,13 @@ vis.utc_scale.from('events.date').in_weeks.to_width
 vis.pow_scale.from('earthquake.magnitude').to_height.in_exponent(10).include_zero
 # transform magnitudes into a range of the height of the canvas in exponents, showing the relative strength
 # also include zero as the baseline
-{% endhighlight %}
+```
 
 It doesn't matter if you switch any of the method calls, as long as they read _naturally_ for you. For instance, you can also write the last example as
 
-{% highlight ruby %}
+```ruby
 vis.pow_scale.in_exponent(10).from('earthquake.magitude').include_zero.to_height
-{% endhighlight %}
+```
 
 Being simple does not necessarily mean we have to compromise on functionality. You are free to choose the more Rubyish way, or the old-fashioned way (i.e. using the internal APIs). Both can do the exact same things.
 

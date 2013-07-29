@@ -15,7 +15,8 @@ This makes a wrapper difficult to deviate from the original D3 syntax, because b
 Hence, I came up with a [demo](https://github.com/zuhao/d3rb) of the wrapper. As an example, the following Ruby code generates a block of javascript, which in turn renders ten circles with random radii and positions in the browser.
 
 Ruby:
-{% highlight ruby %}
+
+```ruby
 width, height = 800, 400
 range = D3.new.range(10)
 svg = D3.new.select('body').append('svg').attr('width', width).attr('height', height)
@@ -29,10 +30,11 @@ d = svg.selectAll('circle') do
     style 'stroke', '#000'
   end
 end
-{% endhighlight %}
+```
 
 Javascript:
-{% highlight javascript %}
+
+```javascript
 <script src='http://d3js.org/d3.v3.min.js'></script>
 <script type='text/javascript'>
 d3.select('body').append('svg').attr('width',800).attr('height',400).selectAll('circle')
@@ -42,7 +44,7 @@ d3.select('body').append('svg').attr('width',800).attr('height',400).selectAll('
 .attr('r',function() {return 50 + Math.random() * 50;})
 .style('fill-opacity',0.1).style('stroke','#000')
 </script>
-{% endhighlight %}
+```
 
 Generated SVG in browser:
 ![circles](https://raw.github.com/zuhao/d3rb/master/examples/images/10-random-circles.png)
@@ -67,12 +69,14 @@ First of all, let's jump outside of the box, and take a look at the problem agai
 Regarding the last point, the closest thing we may have is perhaps [Opal](http://opalrb.org/), which is a promising project designed specifically to do the job, but here's what we've got.
 
 A simple Ruby function that can be applied to manipulate data,
-{% highlight ruby %}
+
+```ruby
 my_func = lambda { |x| (x * Kernel::rand).ceil }
-{% endhighlight %}
+```
 
 is then compiled into the following javascript code:
-{% highlight javascript %}
+
+```javascript
 (function(__opal) {
   var TMP_1, $a, $b, self = __opal.top, __scope = __opal, $mm = __opal.mm, $nil = __opal.nil, __breaker = __opal.breaker, __slice = __opal.slice, my_func;
   return my_func = ($a = ((($b = self) == null ? $b = $nil : $b).$lambda || $mm('lambda')), $a._p = (TMP_1 = function(x) {
@@ -82,7 +86,7 @@ is then compiled into the following javascript code:
     return ((($a = ($b = x, $c = ((($d = (($e = __scope.Kernel) === undefined ? __opal.cm("Kernel") : $e)) == null ? $d = $nil : $d).$rand || $mm('rand')).call($d), typeof($b) === 'number' ? $b * $c : $b['$*']($c))) == null ? $a = $nil : $a).$ceil || $mm('ceil')).call($a)
   }, TMP_1._s = self, TMP_1), $a).call($b)
 })(Opal);
-{% endhighlight %}
+```
 
 I'm not sure about you, but this is certainly unacceptable to me.
 
@@ -96,12 +100,12 @@ No more translation, Vega itself is written natively in javascript. More importa
 
 Another advantage of Vega is that it's a "declarative" grammar. Comparing to D3, it is higher level in terms of abstraction and simplicity for the users. For example, if you want to plot a bar chart in D3, the axes alone would require much of your attention, and "bother" you with all kinds of details such as scales, orientations, tick sizes, padding, etc. But more often than not, you just want a damn pair of axes! Vega takes care of many of the details, and let you focus on more important things. To declare axes in the specification, it's as simple as the following four lines.
 
-{% highlight json %}
+```json
 "axes": [
     {"type": "x", "scale": "x"},
     {"type": "y", "scale": "y"}
 ]
-{% endhighlight %}
+```
 
 ### Trade-offs?
 

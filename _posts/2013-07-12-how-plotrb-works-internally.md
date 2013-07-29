@@ -10,18 +10,18 @@ There are a few important components that we can find in most of the plots, name
 
 First of all, data is the very soul of the plot. The reason we use plots is primarily to visualize _data_. The data for plotrb can come in different forms, such as json, csv, tsv, or internal objects such as hashes and arrays. In this example, we will read josn data from a url, and it contains coordinates of a lot of points to be plotted. We can have multiple data sets; just put them together in an array for later use.
 
-{% highlight ruby %}
+```ruby
 # Data
 json_url = 'http://trifacta.github.io/vega/editor/data/points.json'
 data = [
   ::Plotrb::Data.new(name: 'points', url: json_url)
   # we can have as many data sets as we like
 ]
-{% endhighlight %}
+```
 
 Next, we need scales that transform our raw _data_ values (domain) into _visual_ values (range). We  reference the data set `points` defined previously as domains. `nice` rounds the values so they are more human-friendly. `range` simply takes the width and height of the canvas. Similarly to data, we group the two scales together.
 
-{% highlight ruby %}
+```ruby
 scale_x = ::Plotrb::Scale.new(
   name: 'x', nice: true, range: :width, 
   domain: ::Plotrb::DataRef.new(data: 'points', field: 'data.x')
@@ -31,22 +31,22 @@ scale_y = ::Plotrb::Scale.new(
   domain: ::Plotrb::DataRef.new(data: 'points', field: 'data.y')
 )
 scales = [scale_x, scale_y]
-{% endhighlight %}
+```
 
 We can then move on to axes based on the scales defined.
 
-{% highlight ruby %}
+```ruby
 # Axes
 axis_x = ::Plotrb::Axis.new(type: :x, scale: 'x')
 axis_y = ::Plotrb::Axis.new(type: :y, scale: 'y')
 axes = [axis_x, axis_y]
-{% endhighlight %}
+```
 
 Now the most complex part. Marks. We will use circles by default for `symbol` type; of course we can have other shapes such as square, diamond, etc. There are some primary property sets such as `enter`, `exit`, `update` and `hover`; it's not hard to guess what they does.
 
 We want our circles to be in blue, and transparent inside. Furthermore, when displaying the plot in a web browser, we would like some interactivity, for example enlarging the circle and changing it to pink when the mouse hovers over it.
 
-{% highlight ruby %}
+```ruby
 # Marks
 mark = ::Plotrb::Mark.new(type: :symbol, from: {data: 'points'})
 properties = {
@@ -67,28 +67,28 @@ properties = {
 }
 mark.properties = properties
 marks = [mark]
-{% endhighlight %}
+```
 
 And we are almost done. We have all the components of a plot we need, what's left to do is pull out a paper/canvas/rectangle (whatever you'd like to call it). It is called `Visualization` in Plotrb, and it's the top-level container for all other visual elements we've built previously.
 
-{% highlight ruby %}
+```ruby
 # Visualization
 padding = {top: 50, left: 50, bottom: 50, right: 50}
 visualization = ::Plotrb::Visualization.new(
   name: 'vis', width: 400, height: 400, padding: padding, 
   data: data, scales: scales, marks: marks, axes: axes
 )
-{% endhighlight %}
+```
 
 Now is when the magic happens.
 
-{% highlight ruby %}
+```ruby
 visualization.generate_spec(:pretty)
-{% endhighlight %}
+```
 
 Wait for it... and Voilà, the JSON specification of the plot!
 
-{% highlight json %}
+```json
 {
   "name": "vis",
   "width": 400,
@@ -179,7 +179,7 @@ Wait for it... and Voilà, the JSON specification of the plot!
     }
   ]
 }
-{% endhighlight %}
+```
 
 We can embed it in web pages, or generate png/svg from it directly using Vega's headless mode. For simplicity, we just run `vg2png demo.json demo.png`, and here's what we've got.
 
