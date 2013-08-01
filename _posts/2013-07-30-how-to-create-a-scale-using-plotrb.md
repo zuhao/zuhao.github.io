@@ -145,7 +145,7 @@ Available options are `in_seconds`, `in_minutes`, `in_hours`, `in_days`, `in_wee
 
 ### zero
 
-Only for quantitative scale, specify if zero baseline is included in the domain.
+You can use `include_zero` to specify if zero baseline is included in the domain (for quantitative scale only).
 
 ### clamp
 

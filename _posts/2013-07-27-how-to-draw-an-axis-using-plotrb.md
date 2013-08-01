@@ -42,7 +42,7 @@ These are standard ways of setting attributes, thus I'm going to omit them below
 
 ### type
 
-There are only two types of axis, namely `x` or `y`. You can also specify the type of the axis directly inside a visualization.
+There are only two types of axis, namely `x` or `y`. You can specify the type of the axis directly inside a visualization.
 
 ```ruby
 vis = Plotrb::Visualization.new
@@ -51,7 +51,7 @@ axis = vis.x_axis
 
 ### scale
 
-Each axis is backed up by a scale previously defined in the visualization. You can call ``from`, instead of `scale`, to specify the underlying Scale for the axis.
+Each axis is backed up by a scale previously defined in the visualization. You can call `from`, instead of `scale`, to specify the underlying Scale for the axis.
 
 ```ruby
 axis.from('some_scale_name')
@@ -66,7 +66,7 @@ axis.from(my_scale)
 
 ### offset
 
-You can also call `offset_by` if that reads more natural to you.
+You can call `offset_by` if that reads more natural to you.
 
 ```ruby
 axis.type(:x) do
@@ -97,7 +97,7 @@ y_axis.below
 
 ### title
 
-You can also provide the offset when setting the title for the axis.
+You can provide the offset when setting the title for the axis.
 
 ```ruby
 axis.title('some_title', 5)
@@ -113,7 +113,7 @@ For more about the formatting pattern for the axis labels, please refer to [D3's
 
 ### ticks
 
-You may also specify the number of ticks on the axis as follows,
+You may specify the number of ticks on the axis as follows,
 
 ```ruby
 axis.type(:x) do
@@ -123,7 +123,7 @@ end
 
 ### subdivide
 
-You may also specify the number of minor ticks between major ticks as follows,
+You may specify the number of minor ticks between major ticks as follows,
 
 ```ruby
 axis.with_20_ticks do
@@ -141,7 +141,7 @@ You can set the size of major, minor, and end ticks.
 
 ### tick_size_major
 
-You can also try the following if it reads more natural.
+You can try the following if it reads more natural.
 
 ```ruby
 axis.type(:x) do
@@ -159,27 +159,4 @@ See above. Set the size of the end ticks.
 
 ### grid
 
-You can also use `show_grid` or `with_grid` to specify that gridlines should be created in addition to ticks.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+You can use `show_grid` or `with_grid` to specify that gridlines should be created in addition to ticks.
