@@ -8,7 +8,7 @@ The development of the first version of Plotrb is coming to an end (with a lot o
 
 In this post, I will use Plotrb to draw a very simple area diagram.
 
-```
+```ruby
 require 'plotrb'
 
 data = pdata.name('table').values(
