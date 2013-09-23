@@ -53,4 +53,4 @@ end
 puts vis.generate_spec(:pretty)
 ```
 
-To see it in action, take a look at this [js fiddle](http://jsfiddle.net/zuhao/sL77a/).
+To see it in action, take a look at this [demo](http://bl.ocks.org/zuhao/6662333).

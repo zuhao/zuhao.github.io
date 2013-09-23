@@ -115,4 +115,4 @@ end
 puts vis.generate_spec(:pretty)
 ```
 
-Take a look at this [js fiddle](http://jsfiddle.net/zuhao/5Jzxy/) to see how the spec is rendered in the browser.
+Take a look at this [demo](http://bl.ocks.org/zuhao/6664107) to see how the spec is rendered in the browser.

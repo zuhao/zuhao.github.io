@@ -59,4 +59,4 @@ end
 puts vis.generate_spec(:pretty)
 ```
 
-Excluding the data, the program is indeed very short and sweet. Take a look at this [js fiddle](http://jsfiddle.net/zuhao/TK3am/) to see how the spec is rendered in the browser.
+Excluding the data, the program is indeed very short and sweet. Take a look at this [demo](http://bl.ocks.org/zuhao/6663999) to see how the spec is rendered in the browser.
